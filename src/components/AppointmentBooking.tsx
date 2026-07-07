@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { Calendar as CalendarIcon, Clock, ShieldCheck, Mail, Send, Bell } from 'lucide-react';
+import { Calendar as CalendarIcon, ShieldCheck } from 'lucide-react';
 import { Database } from '../lib/seedData';
 import { Appointment } from '../types';
 
@@ -103,10 +103,10 @@ export default function AppointmentBooking() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="max-w-3xl mx-auto">
           
-          {/* Left Column: Core Form (7 cols) */}
-          <div className="lg:col-span-7 bg-dark-800 border border-dark-650 rounded-lg p-8">
+          {/* Core Form */}
+          <div className="bg-dark-800 border border-dark-650 rounded-lg p-8 shadow-xl">
             {!bookedDetails ? (
               <form onSubmit={handleBooking} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -259,49 +259,6 @@ export default function AppointmentBooking() {
               </div>
             )}
           </div>
-
-          {/* Right Column: Automated Alerts Monitor (5 cols) */}
-          <div className="lg:col-span-5 bg-dark-900 text-dark-100 rounded-lg p-6 border border-dark-650 h-full flex flex-col justify-between shadow-lg">
-            <div>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 rounded-full bg-dark-800 border border-dark-650 flex items-center justify-center text-gold-500">
-                  <Bell className="w-4 h-4" />
-                </div>
-                <h4 className="text-sm font-semibold tracking-wide uppercase font-mono text-gold-500">Automation Trigger Monitor</h4>
-              </div>
-              <p className="text-xs text-dark-300 leading-relaxed mb-6">
-                When you schedule or update court hearings/consultations, Sheikh Law Associates' integrated system initiates background SMTP handlers and dispatches alert sequences immediately.
-              </p>
-
-              {/* Log Window */}
-              <div className="bg-dark-950 rounded border border-dark-650 p-4 h-64 overflow-y-auto font-mono text-[11px] leading-relaxed text-emerald-400 space-y-2">
-                {bookingLog.length === 0 ? (
-                  <div className="text-dark-400 flex flex-col items-center justify-center h-full text-center p-4">
-                    <Clock className="w-8 h-8 mb-2 opacity-50 text-gold-500/40" />
-                    <span>Await booking submission to view live automation pipeline events.</span>
-                  </div>
-                ) : (
-                  bookingLog.map((line, index) => (
-                    <div key={index} className="border-b border-dark-650 pb-1 last:border-0 font-mono text-emerald-400">
-                      {line}
-                    </div>
-                  ))
-                )}
-              </div>
-            </div>
-
-            <div className="mt-8 border-t border-dark-650 pt-6 space-y-3">
-              <div className="flex items-center space-x-2 text-[11px] text-dark-300">
-                <Mail className="w-4 h-4 text-gold-500 shrink-0" />
-                <span>Email reminder system fully integrated (counsel@registryonline.pk)</span>
-              </div>
-              <div className="flex items-center space-x-2 text-[11px] text-dark-300">
-                <Send className="w-4 h-4 text-gold-500 shrink-0" />
-                <span>Court hearing automated notification active.</span>
-              </div>
-            </div>
-          </div>
-
         </div>
 
       </div>
