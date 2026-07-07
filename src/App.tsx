@@ -42,30 +42,6 @@ export default function App() {
   return (
     <div id="applet-container" className="min-h-screen bg-dark-950 text-dark-100 selection:bg-gold-500/20 selection:text-gold-300">
       
-      {/* Sandbox Toggle Ribbon */}
-      <div className="bg-dark-900 border-b border-gold-500/20 px-4 py-2.5 flex items-center justify-between text-xs text-dark-300">
-        <div className="flex items-center space-x-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span className="font-mono text-[10px] tracking-wider text-dark-400">
-            SECURE SANDBOX &bull; SHEIKH LAW ASSOCIATES &bull; REGISTRYONLINE.PK
-          </span>
-        </div>
-        <div className="flex items-center space-x-3">
-          <span className="text-[10px] text-dark-400 hidden sm:inline">Review administrative workflows:</span>
-          <button
-            id="sandbox-toggle"
-            onClick={() => {
-              setIsAdminMode(!isAdminMode);
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className={`px-3 py-1 rounded font-mono font-bold text-[10px] tracking-widest uppercase transition-all flex items-center space-x-1 border ${isAdminMode ? 'bg-gold-500 text-dark-950 border-gold-500' : 'bg-dark-800 hover:bg-dark-700 text-gold-500 border-dark-650'}`}
-          >
-            <Sliders className="w-3.5 h-3.5 shrink-0" />
-            <span>{isAdminMode ? 'Switch to Client View' : 'Switch to Admin Panel'}</span>
-          </button>
-        </div>
-      </div>
-
       {/* Primary Navigation Header */}
       <header className="sticky top-0 z-40 bg-dark-900/90 backdrop-blur-md border-b border-dark-650">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">

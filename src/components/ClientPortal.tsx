@@ -14,9 +14,14 @@ import { LegalCase, CaseDocument, Invoice, ProgressNotification } from '../types
 
 export default function ClientPortal() {
   // Authentication states
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [authMode, setAuthMode] = useState<'signin' | 'signup'>('signin');
-  const [userProfile, setUserProfile] = useState<{ uid: string; email: string; name: string; role: 'client' | 'admin' } | null>(null);
+  const [userProfile, setUserProfile] = useState<{ uid: string; email: string; name: string; role: 'client' | 'admin' } | null>({
+    uid: 'user-client-123',
+    email: 'ali.m@gmail.com',
+    name: 'Muhammad Ali',
+    role: 'client'
+  });
   
   // Auth Form Fields
   const [email, setEmail] = useState('ali.m@gmail.com'); // Default for seamless demo
@@ -444,15 +449,6 @@ export default function ClientPortal() {
                     <span>Notifications ({myNotifs.filter(n => !n.isRead).length} Unread)</span>
                   </button>
                 </nav>
-              </div>
-
-              <div className="mt-12 pt-6 border-t border-dark-650 text-center">
-                <button 
-                  onClick={() => { setIsAuthenticated(false); setUserProfile(null); }}
-                  className="text-xs text-rose-400 hover:text-rose-300 transition-colors font-semibold cursor-pointer"
-                >
-                  LOCK PORTAL & LOGOUT
-                </button>
               </div>
             </div>
 
