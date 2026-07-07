@@ -1,0 +1,6 @@
+{
+  "name": "Sheikh Law Associates",
+  "description": "Comprehensive corporate and real estate litigation website featuring a client portal, secure document vault, automated consultation scheduler, jurisprudence database search, and admin dashboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

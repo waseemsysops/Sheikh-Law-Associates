@@ -1,0 +1,173 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with role-based permissions (admin or client).",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["client", "admin"] },
+        "phone": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "name", "role"]
+    },
+    "Case": {
+      "title": "Case",
+      "description": "A legal case assigned to a client.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientUid": { "type": "string" },
+        "clientName": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "practiceArea": { "type": "string" },
+        "status": { "type": "string", "enum": ["Active", "Pending", "Closed"] },
+        "progress": { "type": "integer" },
+        "hearingDate": { "type": "string" },
+        "hearingLocation": { "type": "string" },
+        "fileNumber": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "clientUid", "title", "practiceArea", "status", "progress"]
+    },
+    "Appointment": {
+      "title": "Appointment",
+      "description": "An appointment booking for consultations.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientUid": { "type": "string" },
+        "clientName": { "type": "string" },
+        "clientEmail": { "type": "string" },
+        "clientPhone": { "type": "string" },
+        "dateTime": { "type": "string" },
+        "practiceArea": { "type": "string" },
+        "notes": { "type": "string" },
+        "status": { "type": "string", "enum": ["Pending", "Approved", "Cancelled"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "clientName", "clientEmail", "dateTime", "practiceArea", "status"]
+    },
+    "Blog": {
+      "title": "Blog",
+      "description": "A legal insight or blog update.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "category": { "type": "string" },
+        "author": { "type": "string" },
+        "readTime": { "type": "string" },
+        "publishedAt": { "type": "string", "format": "date-time" },
+        "coverImage": { "type": "string" },
+        "isPublished": { "type": "boolean" }
+      },
+      "required": ["id", "title", "content", "category", "author", "isPublished"]
+    },
+    "Invoice": {
+      "title": "Invoice",
+      "description": "An invoice or retainer fee detail.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientUid": { "type": "string" },
+        "clientName": { "type": "string" },
+        "caseTitle": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["Unpaid", "Paid", "Overdue"] },
+        "dueDate": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "paidAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "clientUid", "amount", "status", "dueDate"]
+    },
+    "Notification": {
+      "title": "Notification",
+      "description": "Case alerts, court hearing reminders, and notifications.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientUid": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "type": { "type": "string", "enum": ["case_progress", "hearing", "payment"] },
+        "isRead": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "clientUid", "title", "message", "type", "isRead"]
+    },
+    "Document": {
+      "title": "Document",
+      "description": "A secure legal document representing evidence or case paperwork.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "caseId": { "type": "string" },
+        "clientUid": { "type": "string" },
+        "name": { "type": "string" },
+        "size": { "type": "string" },
+        "type": { "type": "string" },
+        "isEncrypted": { "type": "boolean" },
+        "encryptionKeyId": { "type": "string" },
+        "uploadedAt": { "type": "string", "format": "date-time" },
+        "fileData": { "type": "string", "description": "Base64 encoded secure local content for mock or encrypted simulation storage" }
+      },
+      "required": ["id", "clientUid", "name", "size", "isEncrypted"]
+    },
+    "Inquiry": {
+      "title": "Inquiry",
+      "description": "A contact inquiry or legal brief submitted via the contact form.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "subject": { "type": "string" },
+        "practiceArea": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email", "phone", "subject", "message"]
+    }
+  },
+  "firestore": {
+    "inquiries/{inquiryId}": {
+      "schema": "Inquiry",
+      "description": "Secure user contact briefs."
+    },
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profile records."
+    },
+    "cases/{caseId}": {
+      "schema": "Case",
+      "description": "Legal cases registry."
+    },
+    "appointments/{appointmentId}": {
+      "schema": "Appointment",
+      "description": "Scheduled legal consultations."
+    },
+    "blogs/{blogId}": {
+      "schema": "Blog",
+      "description": "Insights, articles, and newsletter updates."
+    },
+    "invoices/{invoiceId}": {
+      "schema": "Invoice",
+      "description": "Invoices and retainer fee tracking records."
+    },
+    "notifications/{notificationId}": {
+      "schema": "Notification",
+      "description": "User alerts and case status push updates."
+    },
+    "documents/{documentId}": {
+      "schema": "Document",
+      "description": "Confidential files related to legal proceedings."
+    }
+  }
+}

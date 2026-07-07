@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", Georgia, Cambria, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-gold-50: #fcf9ed;
+  --color-gold-100: #f7f1d0;
+  --color-gold-200: #efe3a3;
+  --color-gold-300: #e6d273;
+  --color-gold-400: #dcbd47;
+  --color-gold-500: #D4AF37;
+  --color-gold-600: #B29026;
+  --color-gold-700: #8E701C;
+  --color-gold-800: #6a5215;
+  --color-gold-900: #4b3a0e;
+  --color-gold-950: #2e2307;
+  
+  --color-dark-50: #f3f4f6;
+  --color-dark-100: #e5e7eb;
+  --color-dark-200: #d1d5db;
+  --color-dark-300: #9ca3af;
+  --color-dark-400: #4b5563;
+  --color-dark-500: #374151;
+  --color-dark-650: #1F2229;
+  --color-dark-700: #1A1C22;
+  --color-dark-800: #14161B;
+  --color-dark-900: #0D0F13;
+  --color-dark-950: #0A0B0D;
+}
+
+/* Custom visual refinements */
+body {
+  font-family: var(--font-sans);
+  background-color: #0A0B0D;
+  color: #E0E2E6;
+}
+
+/* Custom scrollbar for modern aesthetics */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0D0F13;
+}
+::-webkit-scrollbar-thumb {
+  background: #1F2229;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2A2D35;
+}
