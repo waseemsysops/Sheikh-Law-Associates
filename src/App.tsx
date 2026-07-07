@@ -6,14 +6,14 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Scale, Shield, Sliders, Menu, X, Briefcase, 
-  Search, Calendar, MessageSquare, Phone, Lock, Eye, AlertCircle 
+  Search, Calendar, MessageSquare, Phone, Lock, Eye, AlertCircle,
+  ChevronDown
 } from 'lucide-react';
 import PracticeAreas from './components/PracticeAreas';
 import ContactForm from './components/ContactForm';
 import AppointmentBooking from './components/AppointmentBooking';
 import ResourceSearch from './components/ResourceSearch';
 import BlogSection from './components/BlogSection';
-import ClientPortal from './components/ClientPortal';
 import AdminDashboard from './components/AdminDashboard';
 
 export default function App() {
@@ -44,7 +44,7 @@ export default function App() {
       
       {/* Primary Navigation Header */}
       <header className="sticky top-0 z-40 bg-dark-900/90 backdrop-blur-md border-b border-dark-650">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative">
           
           {/* Logo / Title */}
           <div 
@@ -62,19 +62,12 @@ export default function App() {
 
           {/* Desktop Navigation */}
           {!isAdminMode ? (
-            <nav className="hidden lg:flex items-center space-x-8 text-xs font-semibold tracking-wider text-dark-200 uppercase">
-              <button onClick={() => scrollToSection('practice-areas')} className="hover:text-gold-500 transition-colors cursor-pointer">Practice Areas</button>
+            <nav className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center space-x-8 text-xs font-semibold tracking-wider text-dark-200 uppercase">
+              <button onClick={() => scrollToSection('practice-areas')} className="hover:text-gold-500 transition-colors cursor-pointer">Services</button>
               <button onClick={() => scrollToSection('resources-search')} className="hover:text-gold-500 transition-colors cursor-pointer">Resource Search</button>
               <button onClick={() => scrollToSection('booking')} className="hover:text-gold-500 transition-colors cursor-pointer">Book Consultation</button>
               <button onClick={() => scrollToSection('blog')} className="hover:text-gold-500 transition-colors cursor-pointer">Chamber Insights</button>
               <button onClick={() => scrollToSection('contact')} className="hover:text-gold-500 transition-colors cursor-pointer">Contact</button>
-              <button 
-                onClick={() => scrollToSection('portal')} 
-                className="bg-dark-800 hover:bg-gold-500 border border-dark-650 hover:border-gold-500 text-gold-500 hover:text-dark-950 px-4 py-2 rounded transition-all duration-300 flex items-center space-x-1.5 cursor-pointer font-bold"
-              >
-                <Lock className="w-3.5 h-3.5 text-gold-500 group-hover:text-dark-950" />
-                <span>Client Portal</span>
-              </button>
             </nav>
           ) : (
             <div className="hidden lg:flex items-center text-xs font-semibold tracking-wider text-gold-500 uppercase font-mono space-x-2">
@@ -103,13 +96,6 @@ export default function App() {
             <button onClick={() => scrollToSection('booking')} className="block w-full text-left text-xs font-semibold tracking-wider text-dark-200 uppercase hover:text-gold-500">Book Consultation</button>
             <button onClick={() => scrollToSection('blog')} className="block w-full text-left text-xs font-semibold tracking-wider text-dark-200 uppercase hover:text-gold-500">Chamber Insights</button>
             <button onClick={() => scrollToSection('contact')} className="block w-full text-left text-xs font-semibold tracking-wider text-dark-200 uppercase hover:text-gold-500">Contact</button>
-            <button 
-              onClick={() => scrollToSection('portal')} 
-              className="w-full bg-dark-800 border border-dark-650 text-gold-500 hover:bg-gold-500 hover:text-dark-950 px-4 py-2.5 rounded font-bold text-xs uppercase tracking-wider text-center flex items-center justify-center space-x-1.5 transition-all duration-300"
-            >
-              <Lock className="w-3.5 h-3.5" />
-              <span>Client Vault Login</span>
-            </button>
           </div>
         )}
       </header>
@@ -164,13 +150,6 @@ export default function App() {
                       className="bg-gold-500 hover:bg-gold-600 text-dark-950 font-bold text-xs tracking-widest uppercase px-6 py-3.5 rounded transition-all cursor-pointer shadow-[0_0_15px_rgba(212,175,55,0.15)] hover:shadow-[0_0_25px_rgba(212,175,55,0.3)]"
                     >
                       Schedule Consultation
-                    </button>
-                    <button 
-                      onClick={() => scrollToSection('portal')}
-                      className="bg-dark-800 hover:bg-dark-700 border border-dark-650 text-dark-100 hover:border-gold-500 hover:text-gold-500 font-semibold text-xs tracking-widest uppercase px-6 py-3.5 rounded transition-all cursor-pointer flex items-center space-x-2"
-                    >
-                      <Lock className="w-4 h-4 text-gold-500" />
-                      <span>Enter Client Vault</span>
                     </button>
                   </div>
                 </div>
@@ -228,9 +207,6 @@ export default function App() {
             {/* Blog Section */}
             <BlogSection />
 
-            {/* Client Portal Panel */}
-            <ClientPortal />
-
             {/* Contact Form Section */}
             <ContactForm />
 
@@ -256,7 +232,6 @@ export default function App() {
             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-gold-500 transition-colors cursor-pointer">Main chambers</button>
             <button onClick={() => scrollToSection('practice-areas')} className="hover:text-gold-500 transition-colors cursor-pointer">Practice competencies</button>
             <button onClick={() => scrollToSection('resources-search')} className="hover:text-gold-500 transition-colors cursor-pointer">Statute registry search</button>
-            <button onClick={() => scrollToSection('portal')} className="hover:text-gold-500 transition-colors cursor-pointer">Vault login</button>
           </div>
         </div>
       </footer>
