@@ -15,6 +15,9 @@ import AppointmentBooking from './components/AppointmentBooking';
 import ResourceSearch from './components/ResourceSearch';
 import BlogSection from './components/BlogSection';
 import AdminDashboard from './components/AdminDashboard';
+import AboutChambers from './components/AboutChambers';
+import OurTeam from './components/OurTeam';
+import OfficeLocations from './components/OfficeLocations';
 
 export default function App() {
   const [isAdminMode, setIsAdminMode] = useState(false);
@@ -62,10 +65,13 @@ export default function App() {
 
           {/* Desktop Navigation */}
           {!isAdminMode ? (
-            <nav className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center space-x-8 text-xs font-semibold tracking-wider text-dark-200 uppercase">
+            <nav className="hidden lg:flex items-center space-x-5 xl:space-x-7 text-xs font-semibold tracking-wider text-dark-200 uppercase whitespace-nowrap">
+              <button onClick={() => scrollToSection('about')} className="hover:text-gold-500 transition-colors cursor-pointer">About Us</button>
               <button onClick={() => scrollToSection('practice-areas')} className="hover:text-gold-500 transition-colors cursor-pointer">Services</button>
+              <button onClick={() => scrollToSection('team')} className="hover:text-gold-500 transition-colors cursor-pointer">Our Team</button>
+              <button onClick={() => scrollToSection('offices')} className="hover:text-gold-500 transition-colors cursor-pointer">Offices</button>
               <button onClick={() => scrollToSection('resources-search')} className="hover:text-gold-500 transition-colors cursor-pointer">Resource Search</button>
-              <button onClick={() => scrollToSection('booking')} className="hover:text-gold-500 transition-colors cursor-pointer">Book Consultation</button>
+              <button onClick={() => scrollToSection('booking')} className="hover:text-gold-500 transition-colors cursor-pointer">Booking</button>
               <button onClick={() => scrollToSection('blog')} className="hover:text-gold-500 transition-colors cursor-pointer">Chamber Insights</button>
               <button onClick={() => scrollToSection('contact')} className="hover:text-gold-500 transition-colors cursor-pointer">Contact</button>
             </nav>
@@ -91,7 +97,10 @@ export default function App() {
         {/* Mobile Navigation Dropdown */}
         {mobileMenuOpen && !isAdminMode && (
           <div className="lg:hidden bg-dark-900 border-b border-dark-650 py-4 px-6 space-y-4 shadow-lg animate-in slide-in-from-top duration-200">
-            <button onClick={() => scrollToSection('practice-areas')} className="block w-full text-left text-xs font-semibold tracking-wider text-dark-200 uppercase hover:text-gold-500">Practice Areas</button>
+            <button onClick={() => scrollToSection('about')} className="block w-full text-left text-xs font-semibold tracking-wider text-dark-200 uppercase hover:text-gold-500">About Us</button>
+            <button onClick={() => scrollToSection('practice-areas')} className="block w-full text-left text-xs font-semibold tracking-wider text-dark-200 uppercase hover:text-gold-500">Services</button>
+            <button onClick={() => scrollToSection('team')} className="block w-full text-left text-xs font-semibold tracking-wider text-dark-200 uppercase hover:text-gold-500">Our Team</button>
+            <button onClick={() => scrollToSection('offices')} className="block w-full text-left text-xs font-semibold tracking-wider text-dark-200 uppercase hover:text-gold-500">Our Offices</button>
             <button onClick={() => scrollToSection('resources-search')} className="block w-full text-left text-xs font-semibold tracking-wider text-dark-200 uppercase hover:text-gold-500">Resource Search</button>
             <button onClick={() => scrollToSection('booking')} className="block w-full text-left text-xs font-semibold tracking-wider text-dark-200 uppercase hover:text-gold-500">Book Consultation</button>
             <button onClick={() => scrollToSection('blog')} className="block w-full text-left text-xs font-semibold tracking-wider text-dark-200 uppercase hover:text-gold-500">Chamber Insights</button>
@@ -195,8 +204,17 @@ export default function App() {
               </div>
             </section>
 
+            {/* About Chambers Section */}
+            <AboutChambers />
+
             {/* Practice Areas */}
             <PracticeAreas />
+
+            {/* Our Team Section */}
+            <OurTeam />
+
+            {/* Office Locations Section */}
+            <OfficeLocations />
 
             {/* Resource Search Section */}
             <ResourceSearch />
@@ -230,8 +248,11 @@ export default function App() {
 
           <div className="flex flex-wrap justify-center gap-6 text-[11px]">
             <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="hover:text-gold-500 transition-colors cursor-pointer">Main chambers</button>
-            <button onClick={() => scrollToSection('practice-areas')} className="hover:text-gold-500 transition-colors cursor-pointer">Practice competencies</button>
-            <button onClick={() => scrollToSection('resources-search')} className="hover:text-gold-500 transition-colors cursor-pointer">Statute registry search</button>
+            <button onClick={() => scrollToSection('about')} className="hover:text-gold-500 transition-colors cursor-pointer">About SLA Legal</button>
+            <button onClick={() => scrollToSection('practice-areas')} className="hover:text-gold-500 transition-colors cursor-pointer">Practice areas</button>
+            <button onClick={() => scrollToSection('team')} className="hover:text-gold-500 transition-colors cursor-pointer">Our Team</button>
+            <button onClick={() => scrollToSection('offices')} className="hover:text-gold-500 transition-colors cursor-pointer">Offices</button>
+            <button onClick={() => scrollToSection('resources-search')} className="hover:text-gold-500 transition-colors cursor-pointer">Statutes</button>
           </div>
         </div>
       </footer>
